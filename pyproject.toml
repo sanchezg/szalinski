@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "szalinski"
+version = "0.1.0"
+description = "An URL shortener"
+authors = ["Gonzalo Sanchez"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "^2.3.2"
+asyncio = "^3.4.3"
+SQLAlchemy = "^2.0.12"
+psycopg2-binary = "^2.9.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
