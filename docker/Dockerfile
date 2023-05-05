@@ -25,4 +25,4 @@ RUN poetry config virtualenvs.create false \
 
 # Creating folders, and files for a project:
 COPY . /code
-CMD poetry run flask --app src/main.py run --host=0.0.0.0 --port=8000
+CMD poetry run flask --app src/app.py run --host=0.0.0.0 --port=8000

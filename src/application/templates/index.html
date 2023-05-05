@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szalinski URL Shortener</title>
+</head>
+<body>
+    <h1 style="text-align:center;">Szalinski URL Shortener</h1>
+    <form action="/" method="POST" style="text-align:center;">
+        <label for="url">URL:</label>
+        <input type="url" name="url" id="url" required placeholder="https://enter.a.long/url/?long=true">
+        <input type="submit" value="Shorten">
+    </form>
+
+    <br>
+    {% if url_hash %}
+        <p style="text-align:center;">Honey, this is your shrink URL: <a href="{{ url_hash }}">{{ url_hash }}</a></p>
+    {% endif %}
+</body>
+</html>
