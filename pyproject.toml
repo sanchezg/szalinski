@@ -13,6 +13,10 @@ SQLAlchemy = "^2.0.12"
 psycopg2-binary = "^2.9.6"
 
 
+[tool.poetry.group.dev.dependencies]
+ipdb = "^0.13.13"
+pytest = "^7.3.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
