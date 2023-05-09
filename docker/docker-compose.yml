@@ -11,22 +11,12 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - db
-    environment:
-      - POSTGRES_DB=core
-      - POSTGRES_USER=szadmin
-      - POSTGRES_PASSWORD=szadmin1234
+      - redis
 
-  db:
-    build:
-      context: .
-      dockerfile: Dockerfile.postgres
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
+  redis:
+    image: redis:6.2
+    restart: always
     ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_DB=core
-      - POSTGRES_USER=szadmin
-      - POSTGRES_PASSWORD=szadmin1234
-      - PGDATA='/var/lib/postgresql/data'
+      - '6379:6379'
+    volumes:
+      - ./data/cache:/data

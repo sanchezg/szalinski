@@ -9,8 +9,7 @@ readme = "README.md"
 python = "^3.10"
 Flask = "^2.3.2"
 asyncio = "^3.4.3"
-SQLAlchemy = "^2.0.12"
-psycopg2-binary = "^2.9.6"
+redis = {extras = ["hiredis"], version = "^4.5.5"}
 
 
 [tool.poetry.group.dev.dependencies]
