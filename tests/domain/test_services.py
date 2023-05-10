@@ -1,4 +1,3 @@
-import unittest
 import pytest
 
 from src.domain.services.urls import UrlLookup, UrlStore
@@ -16,12 +15,14 @@ async def test_urllookup_return_url_if_exists():
     result = await service(FAKE_URL_HASH)
     assert result == FAKE_URL
 
+
 @pytest.mark.asyncio
 async def test_urllookup_return_None_if_not_exists():
     fake_repo = FakeRepo()  # empty data
     service = UrlLookup(url_repo=fake_repo)
     result = await service("some1234hash")
     assert result is None
+
 
 @pytest.mark.asyncio
 async def test_urlstore_returns_hash():

@@ -5,7 +5,6 @@ from src.settings import MONGODB_NAME
 
 
 class MongoDBRepo(AbstractRepo):
-
     def __init__(self, client) -> None:
         self.db = client[MONGODB_NAME]
         super().__init__()

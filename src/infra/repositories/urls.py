@@ -14,5 +14,7 @@ class MongoDBUrlRepo(MongoDBRepo, UrlRepo):
         # TODO: use some object-mapper lib for this
         doc = await super().get(**kwargs)
         if doc:
-            return URL(**{field.name: doc[field.name] for field in dataclasses.fields(URL)})
+            return URL(
+                **{field.name: doc[field.name] for field in dataclasses.fields(URL)}
+            )
         return None

@@ -1,11 +1,11 @@
 from hashlib import md5
 from typing import Any
+
 from src.domain.repository import UrlRepo
 from src.domain.services import BaseService
 
 
 class UrlLookup(BaseService):
-
     def __init__(self, url_repo: UrlRepo) -> None:
         self.repo = url_repo
         super().__init__()
@@ -16,7 +16,6 @@ class UrlLookup(BaseService):
 
 
 class UrlStore(BaseService):
-
     def __init__(self, url_repo: UrlRepo) -> None:
         self.repo = url_repo
         super().__init__()

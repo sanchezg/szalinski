@@ -16,7 +16,8 @@ class AbstractGateway(ABC):
 
 
 class MongoDBGateway(AbstractGateway):
-
     def __init__(self, host, port) -> None:
-        self.client = mongodb.AsyncIOMotorClient(host, port, username="root", password="toor2023")
+        self.client = mongodb.AsyncIOMotorClient(
+            host, port, username="root", password="toor2023"
+        )
         super().__init__()
