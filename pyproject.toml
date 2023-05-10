@@ -7,14 +7,17 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-Flask = "^2.3.2"
+Flask = {extras = ["async"], version = "^2.3.2"}
 asyncio = "^3.4.3"
 redis = {extras = ["hiredis"], version = "^4.5.5"}
+dependency-injector = "^4.41.0"
+motor = "^3.1.2"
 
 
 [tool.poetry.group.dev.dependencies]
 ipdb = "^0.13.13"
 pytest = "^7.3.1"
+pytest-asyncio = "^0.21.0"
 
 [build-system]
 requires = ["poetry-core"]

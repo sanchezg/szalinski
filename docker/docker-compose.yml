@@ -11,12 +11,15 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - redis
+      - mongodb
 
-  redis:
-    image: redis:6.2
+  mongodb:
+    image: mongo:6.0
     restart: always
     ports:
-      - '6379:6379'
+      - 27017:27017
     volumes:
-      - ./data/cache:/data
+      - ./data/db:/etc/mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=toor2023
