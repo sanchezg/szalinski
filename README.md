@@ -2,7 +2,7 @@
 
 Hey there! Welcome to Szalinski URL shortener!
 
-First of all: why "Szalinski"? Well, that's the guy who shrunk their entire family in the late '80s movie :)
+First of all: why "Szalinski"? Well, that's the guy who shrunk their entire family in the late '80s [movie](https://en.wikipedia.org/wiki/Honey,_I_Shrunk_the_Kids) :)
 
 ## Running instructions
 
@@ -41,3 +41,7 @@ Run development server with:
 ```
 FLASK_DEBUG=1 poetry run flask --app src/app.py run --host=0.0.0.0 --port=8000
 ```
+
+## Design and considerations
+
+Soon.
