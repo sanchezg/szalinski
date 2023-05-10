@@ -4,7 +4,6 @@ from src.app import app
 
 
 class TestLocationApi(unittest.TestCase):
-
     def setUp(self) -> None:
         self.client = app.test_client()
 
@@ -17,3 +16,8 @@ class TestLocationApi(unittest.TestCase):
         response = self.client.post("/", data={"url": TEST_URL})
         assert response.status_code == 200
         assert TEST_URL not in response.text
+
+    def test_index_GET_url_not_exists_returns_404(self):
+        response = self.client.get("/some-missing-hash")
+        assert response.status_code == 404
+        assert response.text == "Not found"
