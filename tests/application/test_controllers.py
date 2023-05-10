@@ -1,10 +1,11 @@
 import unittest
 
-from src.app import app
+from src.app import create_app
 
 
 class TestLocationApi(unittest.TestCase):
     def setUp(self) -> None:
+        app = create_app()
         self.client = app.test_client()
 
     def test_index_GET_wout_code_returns_main_page(self):
