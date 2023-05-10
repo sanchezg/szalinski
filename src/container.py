@@ -14,8 +14,8 @@ class Container(containers.DeclarativeContainer):
         AsyncIOMotorClient,
         settings.MONGODB_HOST,
         settings.MONGODB_PORT,
-        username="root",
-        password="toor2023",
+        username=settings.MONGODB_USER,
+        password=settings.MONGODB_PASS,
         authSource="admin",
     )
 
