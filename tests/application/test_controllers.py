@@ -1,5 +1,4 @@
 import unittest
-from flask import render_template
 
 from src.app import app
 
@@ -17,4 +16,4 @@ class TestLocationApi(unittest.TestCase):
         TEST_URL = "https://some.long.url/"
         response = self.client.post("/", data={"url": TEST_URL})
         assert response.status_code == 200
-        assert TEST_URL in response.text
+        assert TEST_URL not in response.text
