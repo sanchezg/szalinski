@@ -1,0 +1,6 @@
+REDIS_HOST = "localhost"
+REDIS_PORT = 6379
+
+MONGODB_HOST = "mongodb"
+MONGODB_PORT = 27017
+MONGODB_NAME = "szalinski"
