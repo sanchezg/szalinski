@@ -1,8 +1,7 @@
 from flask import Flask
 
+from src.application.controllers import main
 from src.container import Container
-
-from .application.controllers import main
 
 
 def create_app():
