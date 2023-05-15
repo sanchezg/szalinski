@@ -1265,7 +1265,7 @@ testing = ["Django (<3.1)", "attrs", "colorama", "docopt", "pytest (<7.0.0)"]
 name = "jinja2"
 version = "3.1.2"
 description = "A very fast and expressive template engine."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -1311,7 +1311,7 @@ Werkzeug = ">=2.0.0"
 name = "markupsafe"
 version = "2.1.2"
 description = "Safely add untrusted strings to HTML/XML markup."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -2576,4 +2576,4 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "2eea0bcd12f5f777d9af1b3ee5e80d1803414d0a916a1a9970ab4e35a5ee899d"
+content-hash = "cec0ecf70e2a97b90c4f9fa436e04916bbd33fc8e1132f7e4db259f80f19ad6e"
