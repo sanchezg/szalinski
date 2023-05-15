@@ -1,4 +1,3 @@
-# alpine had an issue with numpy version, didn't want to spent time on it
 FROM python:3.10-buster
 
 ARG ENV
@@ -10,7 +9,7 @@ ENV ENV=${ENV} \
   PIP_NO_CACHE_DIR=off \
   PIP_DISABLE_PIP_VERSION_CHECK=on \
   PIP_DEFAULT_TIMEOUT=100 \
-  POETRY_VERSION=1.4.1 \
+  POETRY_VERSION=1.3.2 \
   PYTHONPATH=/code
 
 # System deps:
@@ -26,4 +25,4 @@ RUN poetry config virtualenvs.create false \
 
 # Creating folders, and files for a project:
 COPY . /code
-CMD poetry run flask --app src/app.py run --host=0.0.0.0 --port=8000
+CMD poetry uvicorn src.main:app --reload --host 0.0.0.0 --port 8000

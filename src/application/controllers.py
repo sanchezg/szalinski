@@ -1,28 +1,38 @@
 from dependency_injector.wiring import Provide, inject
-from flask import Blueprint, redirect, render_template, request
+from fastapi import APIRouter, Depends, HTTPException, responses, status
 
 from src.container import Container
+from src.domain.model import URL
 from src.domain.services.urls import UrlLookup, UrlStore
 
-main = Blueprint("main", __name__, template_folder="templates")
+router = APIRouter()
 
 
-@main.route("/", methods=["GET", "POST"])
-@main.route("/<code>")
+@router.get("/")
+async def index():
+    return "Hello world, I'm Szalinski URL shortener"
+
+
+@router.get("/{code}")
 @inject
-async def index(
-    code=None,
-    url_lookup: UrlLookup = Provide[Container.url_lookup],
-    url_store: UrlStore = Provide[Container.url_store],
+async def get_url(
+    code: str,
+    url_lookup: UrlLookup = Depends(Provide[Container.url_lookup]),
 ):
-    if request.method == "GET":
-        if code is None or code == "favicon.ico":
-            return render_template("index.html")
-        # else: get url and redirect to hashed code
-        url = await url_lookup(url_hash=code)
-        if url:
-            return redirect(url)
-        return "Not found", 404
-    url = request.form.get("url")
+    url = await url_lookup(url_hash=code)
+    if url:
+        return responses.RedirectResponse(url=url, status_code=status.HTTP_302_FOUND)
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND, detail="URL hash not found"
+    )
+
+
+@router.post("/", response_model=URL)
+@inject
+async def submit_url(
+    data: URL,
+    url_store: UrlStore = Depends(Provide[Container.url_store]),
+):
+    url = data.url
     url_hash = await url_store(url=url)
-    return render_template("index.html", url_hash=url_hash)
+    return URL(url=url, url_hash=url_hash)

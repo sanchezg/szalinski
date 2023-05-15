@@ -7,12 +7,15 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-Flask = {extras = ["async"], version = "^2.3.2"}
 asyncio = "^3.4.3"
 redis = {extras = ["hiredis"], version = "^4.5.5"}
 dependency-injector = "^4.41.0"
 motor = "^3.1.2"
 python-dotenv = "^1.0.0"
+urllib3 = "1.26.15"
+gunicorn = "^20.1.0"
+fastapi = "^0.95.1"
+uvicorn = {extras = ["standard"], version = "^0.22.0"}
 
 
 [tool.poetry.group.dev.dependencies]

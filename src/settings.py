@@ -13,7 +13,7 @@ env = os.environ.get("ENV", "LOCAL").lower()
 dotenv_path = BASE_DIR + "/config/.env." + env
 load_dotenv(dotenv_path=dotenv_path)
 
-environment_name = os.environ.get("BASE_HOST", None)
+BASE_URL = os.environ.get("BASE_URL")
 
 IS_PROD_ENV = env == "prod"
 IS_LOCAL_ENV = env == "local"
