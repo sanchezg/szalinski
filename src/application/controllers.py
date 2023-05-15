@@ -33,6 +33,9 @@ async def get_url(
     code: str,
     url_lookup: UrlLookup = Depends(Provide[Container.url_lookup]),
 ):
+    if code == "favicon.ico":
+        return
+
     url = await url_lookup(url_hash=code)
     if url:
         return responses.RedirectResponse(url=url, status_code=status.HTTP_302_FOUND)
