@@ -4,6 +4,11 @@ Hey there! Welcome to Szalinski URL shortener!
 
 First of all: why "Szalinski"? Well, that's the guy who shrunk their entire family in the late '80s [movie](https://en.wikipedia.org/wiki/Honey,_I_Shrunk_the_Kids) :)
 
+## Deployment
+
+This project was deployed in an AWS personal account. All services run in different EC2 instances.
+There is a VPC with two subnets: public and private. Public subnet holds only the web server EC2 instance (running ngnix + uvicorn) and the private subnet holds both the EC2 instance running the MongoDB server and the Redis process.
+
 ## Running instructions
 
 You'll need docker and compose. Clone or download this project and build the images with:
@@ -42,6 +47,11 @@ Run development server with:
 poetry uvicorn src.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
+Run e2e tests with the locust UI by executing this:
+```
+locust
+```
+
 ## Design and considerations
 
 The app was developed with FastAPI, MongoDB and Redis using a DDD approach.
@@ -69,3 +79,19 @@ The codebase was entirely developed using DDD, where I can easily identify these
 DI was also used with dependency-injector package to keep coupling low and instead inject objects already initialized.
 
 Take a look into `pyproject.toml` file to know the involved libraries for each case.
+
+### Routes
+
+There are three routes working in this app:
+
+1. `GET /`: Returns (and renders) an index template page showing a basic form to submit an url to shorten.
+2. `GET /?url=<long_url>`: This is how the form shown in the index is submitted (with query parameters).
+3. `POST /`: Expects an URL json object (just an 'url' field with the url as text) in the request body as shown in the example below.
+
+```
+POST /
+
+{
+    "url": "https://some.very.long.url/maybe-with-a-path/?and=some&additional=arguments"
+}
+```
