@@ -22,6 +22,11 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+      mongodb:
+        image: mongo:6.0
+        env:
+          MONGODB_USER: root
+          MONGODB_PASS: toor2023
 
     steps:
     - uses: actions/checkout@v3
@@ -36,6 +41,6 @@ jobs:
     - name: Run Tests
       run: |
         poetry run pytest tests/
-      env:
-          REDIS_HOST: redis
-          REDIS_PORT: 6379
+      # env:
+      #     REDIS_HOST: redis
+      #     REDIS_PORT: 6379
