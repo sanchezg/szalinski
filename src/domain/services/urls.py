@@ -1,4 +1,4 @@
-from hashlib import md5
+import secrets
 from typing import Any
 
 from src.domain.repository import UrlCacheRepo, UrlRepo
@@ -29,7 +29,7 @@ class UrlStore(BaseService):
         super().__init__()
 
     async def __call__(self, url: str) -> Any:
-        url_hash = md5(url.encode("utf-8")).hexdigest()
+        url_hash = secrets.token_urlsafe(8)
         in_cache = await self.cache.get(url_hash)
         if not in_cache:
             await self.repo.insert(url_hash=url_hash, url=url)
