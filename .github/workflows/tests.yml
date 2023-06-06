@@ -25,8 +25,8 @@ jobs:
       mongodb:
         image: mongo:6.0
         env:
-          MONGODB_USER: root
-          MONGODB_PASS: toor2023
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: toor2023
 
     steps:
     - uses: actions/checkout@v3
